@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using SvanteASPNET1.Data;
 
 namespace SvanteASPNET1
 {
@@ -25,6 +26,9 @@ namespace SvanteASPNET1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddDbContext<MinDbContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("MinDbContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
