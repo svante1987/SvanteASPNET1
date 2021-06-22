@@ -37,6 +37,33 @@ namespace SvanteASPNET1.Data
                     PhoneNumber = "46 666 666 66",
                 },
             };
+
+            Event[] events = new Event[] {
+                new Event(){
+                    Title="Rock helvetet",
+                    Description="Satan vad varmt det är vid datorn",
+                    Place="Stekpannestad",
+                    Address="666 Helvetet",
+                    Date=DateTime.Now.AddDays(34),
+                    SpotsAvailable=666,
+                    Organizer= organizers[0],
+                },
+                new Event(){
+                    Title="Ölhimlen",
+                    Description="Äntligen får du ta dig en öl",
+                    Place="I paaaaken",
+                    Address="Halland Halmstad Tre Öl å En Cidöh",
+                    Date=DateTime.Now.AddDays(12),
+                    SpotsAvailable=23,
+                    Organizer= organizers[0],
+                },
+            };
+
+            AddRange(attendees);
+            AddRange(organizers);
+            AddRange(events);
+
+            SaveChanges();
         }
     }
 }
