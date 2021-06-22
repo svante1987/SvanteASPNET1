@@ -29,6 +29,9 @@ namespace SvanteASPNET1
 
             services.AddDbContext<MinDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("MinDbContext")));
+
+            services.AddDbContext<SvanteASPNET1Context>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("SvanteASPNET1Context")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
