@@ -23,7 +23,8 @@ namespace SvanteASPNET1.Pages
 
         public async Task OnGetAsync()
         {
-            Event = await _context.Event.ToListAsync();
+            var attendee = await _context.Attendee.Include(a => a.Events).FirstOrDefaultAsync();
+            Event = attendee.Events;
         }
     }
 }
