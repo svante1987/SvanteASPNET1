@@ -67,11 +67,14 @@
 <div>
     @if (Request.Method == "POST")
     {
-        <a asp-page="/Events" type="button" class="btn btn-outline-primary">View more events</a>
-        <a asp-page="/MyEvents" type="button" class="btn btn-outline-primary">View your events</a>
+        <h2>Successfully joined @Model.Event.Title! See you there!</h2>
+        <a asp-page="/Events" type="button" class="btn btn-outline-primary">View More Events</a>
+        <a asp-page="/MyEvents" type="button" class="btn btn-outline-primary">View Your Events</a>
     }
     else
     {
-        // TODO <form>
+    <form asp-route-id="@Model.Event.Id">
+        <input type="submit" class="btn btn-outline-primary" value="Join This Event" />
+    </form>
     }
 </div>
