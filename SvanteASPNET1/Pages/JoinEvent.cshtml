@@ -5,50 +5,73 @@
     ViewData["Title"] = "JoinEvent";
 }
 
-<h1>JoinEvent</h1>
 
 <div>
-    <h4>Event</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Event.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Event.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Event.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Event.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Event.Place)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Event.Place)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Event.Address)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Event.Address)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Event.Date)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Event.Date)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Event.SpotsAvailable)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Event.SpotsAvailable)
-        </dd>
-    </dl>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">
+                @Model.Event.Title
+            </h5>
+        </div>
+
+        <div class="card-body">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Event.Description)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Event.Description)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Event.Place)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Event.Place)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Event.Address)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Event.Address)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Event.Date)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Event.Date)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Event.SpotsAvailable)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => model.Event.SpotsAvailable)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 <div>
-    <a asp-page="./Index">Back to List</a>
+</div>
+<div>
+    @if (Request.Method == "POST")
+    {
+        <a asp-page="/Events" type="button" class="btn btn-outline-primary">View more events</a>
+        <a asp-page="/MyEvents" type="button" class="btn btn-outline-primary">View your events</a>
+    }
+    else
+    {
+        // TODO <form>
+    }
 </div>
