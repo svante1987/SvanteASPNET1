@@ -65,6 +65,8 @@ namespace SvanteASPNET1.Data
 
             SaveChanges();
         }
+
+        public DbSet<SvanteASPNET1.Models.Attendee> Attendee { get; set; }
     }
 }
 
