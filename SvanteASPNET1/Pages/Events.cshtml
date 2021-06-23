@@ -1,0 +1,80 @@
+﻿@page
+@model SvanteASPNET1.Pages.EventsModel
+
+@{
+    ViewData["Title"] = "Events";
+    bool DoFirstExpanded = true;
+}
+
+<h1>Events</h1>
+
+<div id="accordion">
+    @foreach (var item in Model.Event)
+    {
+        string headerId = "heading" + item.Id;
+        string bodyId = "collapse" + item.Id;
+
+        <div class="card">
+            <div class="card-header" id="@headerId">
+                <div class="d-flex justify-content-between">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#@bodyId" aria-expanded="@DoFirstExpanded" aria-controls="@bodyId">
+                            @Html.DisplayFor(model => item.Title)
+                        </button>
+                    </h5>
+                    <a asp-page="/JoinEvent" asp-route-id="@item.Id" type="button" class="btn btn-outline-primary">Join</a>
+                </div>
+            </div>
+
+            <div id="@bodyId" class="collapse @(DoFirstExpanded?"show":"")" aria-labelledby="@headerId" data-parent="#accordion">
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => item.Description)
+                                </th>
+                                <td>
+                                    @Html.DisplayFor(model => item.Description)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => item.Place)
+                                </th>
+                                <td>
+                                    @Html.DisplayFor(model => item.Place)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => item.Address)
+                                </th>
+                                <td>
+                                    @Html.DisplayFor(model => item.Address)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => item.Date)
+                                </th>
+                                <td>
+                                    @Html.DisplayFor(model => item.Date)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => item.SpotsAvailable)
+                                </th>
+                                <td>
+                                    @Html.DisplayFor(model => item.SpotsAvailable)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        DoFirstExpanded = false;
+    }
+</div>
