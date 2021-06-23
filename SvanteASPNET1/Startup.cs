@@ -28,6 +28,7 @@ namespace SvanteASPNET1
         {
             services.AddRazorPages();
 
+
             services.AddDbContext<SvanteASPNET1Context>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("SvanteASPNET1Context")));
 

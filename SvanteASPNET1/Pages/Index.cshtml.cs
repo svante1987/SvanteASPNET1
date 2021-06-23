@@ -1,25 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using SvanteASPNET1.Data;
+using SvanteASPNET1.Models;
 
 namespace SvanteASPNET1.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly SvanteASPNET1.Data.SvanteASPNET1Context _context;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(SvanteASPNET1.Data.SvanteASPNET1Context context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public void OnGet()
-        {
+        public IList<Event> Event { get;set; }
 
+        public async Task OnGetAsync()
+        {
+            Event = await _context.Event.ToListAsync();
         }
     }
 }
